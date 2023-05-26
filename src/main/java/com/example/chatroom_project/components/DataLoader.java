@@ -1,8 +1,10 @@
 package com.example.chatroom_project.components;
 
 import com.example.chatroom_project.models.Chatroom;
+import com.example.chatroom_project.models.Message;
 import com.example.chatroom_project.models.User;
 import com.example.chatroom_project.repositories.ChatroomRepository;
+import com.example.chatroom_project.repositories.MessageRepository;
 import com.example.chatroom_project.repositories.UserRepository;
 import com.example.chatroom_project.services.ChatroomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     ChatroomService chatroomService;
 
+    @Autowired
+    MessageRepository messageRepository;
+
 
     public DataLoader(){
 
@@ -40,6 +45,9 @@ public class DataLoader implements ApplicationRunner {
         User user3 = new User("Sarah", "sarah@gmail.com");
         User user4 = new User("Zaynah", "zaynah@gmail.com");
 
+        Message message1 = new Message("Hello", user1, chatroom1);
+        Message message2 = new Message("Hi, how are you?", user2, chatroom1);
+        Message message3 = new Message("Not bad, you?", user1, chatroom1);
 
 
         chatroomRepository.save(chatroom1);
@@ -56,7 +64,11 @@ public class DataLoader implements ApplicationRunner {
         chatroomService.addUserToChatroom(2L, 2L);
         chatroomService.addUserToChatroom(3L, 3L);
         chatroomService.addUserToChatroom(4L, 1L);
+        chatroomService.addUserToChatroom(2L, 1L);
 
+        messageRepository.save(message1);
+        messageRepository.save(message2);
+        messageRepository.save(message3);
     }
 
 }
