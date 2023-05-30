@@ -49,6 +49,17 @@ public class DataLoader implements ApplicationRunner {
         Message message2 = new Message("Hi, how are you?", user2, chatroom1);
         Message message3 = new Message("Not bad, you?", user1, chatroom1);
 
+        Message message4 = new Message("Hello, do you want food?", user2, chatroom2);
+        Message message5 = new Message("Yeah.", user3, chatroom2);
+        Message message6 = new Message("Where do you want to go?", user2, chatroom2);
+
+        Message message7 = new Message("Hello, where are you", user3, chatroom3);
+        Message message8 = new Message("I am around the corner", user4, chatroom3);
+
+        Message message9 = new Message("Hello?", user2, chatroom4);
+        Message message10 = new Message("Pick up the phone", user4, chatroom4);
+
+
 
         chatroomRepository.save(chatroom1);
         chatroomRepository.save(chatroom2);
@@ -59,16 +70,36 @@ public class DataLoader implements ApplicationRunner {
         userRepository.save(user2);
         userRepository.save(user3);
         userRepository.save(user4);
-
+//        for chatroom 1:
         chatroomService.addUserToChatroom(1L, 1L);
-        chatroomService.addUserToChatroom(2L, 2L);
-        chatroomService.addUserToChatroom(3L, 3L);
-        chatroomService.addUserToChatroom(4L, 1L);
         chatroomService.addUserToChatroom(2L, 1L);
+
+//        for chatroom 2:
+        chatroomService.addUserToChatroom(2L, 2L);
+        chatroomService.addUserToChatroom(3L, 2L);
+
+//        for chatroom 3:
+        chatroomService.addUserToChatroom(3L, 3L);
+        chatroomService.addUserToChatroom(4L, 3L);
+
+//        for chatroom 4:
+        chatroomService.addUserToChatroom(4L, 4L);
+        chatroomService.addUserToChatroom(2L, 4L);
+
 
         messageRepository.save(message1);
         messageRepository.save(message2);
         messageRepository.save(message3);
+        messageRepository.save(message4);
+        messageRepository.save(message5);
+        messageRepository.save(message6);
+        messageRepository.save(message7);
+        messageRepository.save(message8);
+        messageRepository.save(message9);
+        messageRepository.save(message10);
+
+
+
     }
 
 }
